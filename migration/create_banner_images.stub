@@ -1,0 +1,41 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+/**
+ * Class Create{{MIGRATION_NAME_BANNER_IMAGE}}
+ */
+class Create{{MIGRATION_NAME_BANNER_IMAGE}} extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create(
+            '{{TABLE_NAME_BANNER_IMAGE}}',
+            function (Blueprint $table) {
+                $table->id();
+                $table->bigInteger('banner_id')->index();
+                $table->string('type_name')->nullable();
+                $table->string('filename')->nullable();
+                $table->integer('size')->nullable();
+                $table->string('extension')->nullable();
+                $table->string('mime')->nullable();
+                $table->string('path');
+                $table->string('file_driver')->nullable();
+                $table->timestamps();
+            }
+        );
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('{{TABLE_NAME_BANNER_IMAGE}}');
+    }
+}

@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+/**
+ * Class Create{{MIGRATION_NAME_BANNER_ATTACH_MODEL}}
+ */
+class Create{{MIGRATION_NAME_BANNER_ATTACH_MODEL}} extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create(
+            '{{TABLE_NAME_BANNER_ATTACH_MODEL}}',
+            function (Blueprint $table) {
+                $table->id();
+                $table->bigInteger('banner_id')->index();
+                $table->string('model_type')->nullable()->index();
+                $table->bigInteger('model_id')->nullable()->index();
+                $table->integer('rank')->default(0);
+                $table->timestamps();
+            }
+        );
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('{{TABLE_NAME_BANNER_ATTACH_MODEL}}');
+    }
+}

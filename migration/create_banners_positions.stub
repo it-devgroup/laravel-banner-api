@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+/**
+ * Class Create{{MIGRATION_NAME_BANNERS_POSITIONS}}
+ */
+class Create{{MIGRATION_NAME_BANNERS_POSITIONS}} extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create(
+            '{{TABLE_NAME_BANNERS_POSITIONS}}',
+            function (Blueprint $table) {
+                $table->id();
+                $table->bigInteger('banner_id')->index();
+                $table->bigInteger('position_id')->index();
+            }
+        );
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('{{TABLE_NAME_BANNERS_POSITIONS}}');
+    }
+}

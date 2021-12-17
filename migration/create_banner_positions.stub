@@ -1,0 +1,35 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+/**
+ * Class Create{{MIGRATION_NAME_POSITION}}
+ */
+class Create{{MIGRATION_NAME_POSITION}} extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create(
+            '{{TABLE_NAME_POSITION}}',
+            function (Blueprint $table) {
+                $table->id();
+                $table->string('title');
+                $table->string('group_name')->nullable()->index();
+                $table->timestamps();
+            }
+        );
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('{{TABLE_NAME_POSITION}}');
+    }
+}

@@ -1,0 +1,43 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+/**
+ * Class Create{{MIGRATION_NAME_BANNER}}
+ */
+class Create{{MIGRATION_NAME_BANNER}} extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create(
+            '{{TABLE_NAME_BANNER}}',
+            function (Blueprint $table) {
+                $table->id();
+                $table->string('title')->nullable();
+                $table->string('link')->nullable();
+                $table->text('description')->nullable();
+                $table->text('content')->nullable();
+                $table->dateTime('start_at')->nullable();
+                $table->dateTime('end_at')->nullable();
+                $table->integer('click_count')->default(0);
+                $table->integer('show_count')->default(0);
+                $table->integer('rank')->default(0);
+                $table->boolean('is_active')->default(true)->index();
+                $table->timestamps();
+            }
+        );
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('{{TABLE_NAME_BANNER}}');
+    }
+}

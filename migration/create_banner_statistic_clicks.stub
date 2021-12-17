@@ -1,0 +1,37 @@
+<?php
+
+use Illuminate\Support\Facades\Schema;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Database\Migrations\Migration;
+
+/**
+ * Class Create{{MIGRATION_NAME_BANNER_STATISTIC_CLICK}}
+ */
+class Create{{MIGRATION_NAME_BANNER_STATISTIC_CLICK}} extends Migration
+{
+    /**
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create(
+            '{{TABLE_NAME_BANNER_STATISTIC_CLICK}}',
+            function (Blueprint $table) {
+                $table->id();
+                $table->bigInteger('banner_id')->index();
+                $table->string('page_referrer')->nullable();
+                $table->integer('click_count')->default(1);
+                $table->json('properties')->nullable();
+                $table->timestamps();
+            }
+        );
+    }
+
+    /**
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('{{TABLE_NAME_BANNER_STATISTIC_CLICK}}');
+    }
+}
